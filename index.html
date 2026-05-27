@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>منصة المعرفة العربية</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Tahoma, Arial, sans-serif;
+background:#07111f;
+color:#fff;
+overflow-x:hidden;
+}
+
+:root{
+--gold:#d4af37;
+--dark:#081321;
+--card:#10233b;
+--light:#d6d6d6;
+}
+
+header{
+background:linear-gradient(90deg,#081321,#10233b);
+padding:25px;
+text-align:center;
+border-bottom:2px solid var(--gold);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+header h1{
+color:var(--gold);
+font-size:35px;
+margin-bottom:20px;
+}
+
+.search-box{
+width:90%;
+max-width:700px;
+margin:auto;
+display:flex;
+gap:10px;
+}
+
+.search-box input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#0d1d31;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.search-box button{
+padding:15px 25px;
+border:none;
+border-radius:12px;
+background:var(--gold);
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}
+
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+flex-wrap:wrap;
+gap:10px;
+background:#0b1728;
+border-bottom:1px solid #23354f;
+}
+
+.points{
+color:var(--gold);
+font-weight:bold;
+}
+
+.login-box{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.login-box input{
+padding:10px;
+border:none;
+border-radius:10px;
+background:#132740;
+color:white;
+}
+
+.login-box button{
+background:var(--gold);
+border:none;
+padding:10px 15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:30px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+border-radius:20px;
+transition:0.3s;
+border:1px solid #1e3859;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:var(--gold);
+box-shadow:0 0 20px rgba(212,175,55,0.2);
+}
+
+.card h2{
+color:var(--gold);
+margin-bottom:15px;
+font-size:24px;
+}
+
+.card p{
+color:var(--light);
+line-height:1.8;
+}
+
+.test-btn{
+display:block;
+margin:20px auto;
+background:var(--gold);
+color:#000;
+padding:15px 25px;
+border:none;
+border-radius:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.section{
+padding:30px;
+display:none;
+animation:fade 0.4s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.section h2{
+color:var(--gold);
+margin-bottom:20px;
+font-size:35px;
+}
+
+.content-box{
+background:#0f2035;
+padding:20px;
+border-radius:18px;
+margin-bottom:20px;
+line-height:2;
+border:1px solid #203754;
+}
+
+.books{
+background:#12263f;
+padding:20px;
+border-radius:18px;
+margin-bottom:20px;
+color:#bbb;
+font-size:20px;
+text-align:center;
+}
+
+.quiz{
+background:#0f2035;
+padding:20px;
+border-radius:18px;
+}
+
+.quiz button{
+margin-top:10px;
+padding:10px 20px;
+background:var(--gold);
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.back{
+margin-bottom:20px;
+display:inline-block;
+background:#132740;
+padding:10px 20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#06101b;
+border-top:1px solid #203754;
+color:#aaa;
+}
+
+.highlight{
+color:var(--gold);
+font-weight:bold;
+}
+
+img.quiz-img{
+width:100%;
+max-width:300px;
+border-radius:15px;
+margin:15px 0;
+}
+
+@media(max-width:700px){
+header h1{
+font-size:26px;
+}
+
+.section h2{
+font-size:28px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 منصة المعرفة العربية</h1>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="ابحث عن مجال أو درس...">
+<button onclick="searchCategory()">بحث</button>
+</div>
+</header>
+
+<div class="top-bar">
+
+<div class="points">
+⭐ النقاط: <span id="points">0</span>
+</div>
+
+<div class="login-box">
+<input type="text" id="username" placeholder="اسم المستخدم">
+<input type="password" id="password" placeholder="كلمة السر">
+<button onclick="login()">دخول</button>
+</div>
+
+</div>
+
+<button class="test-btn" onclick="showRandomQuiz()">🧠 اختبر معلوماتك</button>
+
+<div class="categories" id="mainCategories">
+
+<div class="card" onclick="openSection('deen')">
+<h2>🕌 الدين</h2>
+<p>
+القرآن الكريم، الأحاديث، العقيدة، الفقه، السيرة، الأذكار، التجويد والمزيد.
+</p>
+</div>
+
+<div class="card" onclick="openSection('science')">
+<h2>🔬 العلوم</h2>
+<p>
+الفيزياء، الكيمياء، الأحياء، الرياضيات، الطب، الفلك وغيرها.
+</p>
+</div>
+
+<div class="card" onclick="openSection('law')">
+<h2>⚖️ القانون</h2>
+<p>
+القانون المدني والجنائي والإداري والدولي وقوانين الجزائر.
+</p>
+</div>
+
+<div class="card" onclick="openSection('tech')">
+<h2>💻 التكنولوجيا</h2>
+<p>
+البرمجة، الذكاء الاصطناعي، الشبكات، الأمن السيبراني.
+</p>
+</div>
+
+<div class="card" onclick="openSection('economy')">
+<h2>💰 الاقتصاد</h2>
+<p>
+المحاسبة، التسويق، الإدارة، البنوك والاقتصاد الجزائري.
+</p>
+</div>
+
+<div class="card" onclick="openSection('arts')">
+<h2>🎨 الفنون</h2>
+<p>
+الشعر، الأدب، الموسيقى، المسرح، السينما والفنون البصرية.
+</p>
+</div>
+
+<div class="card" onclick="openSection('sports')">
+<h2>🏋️ الرياضة</h2>
+<p>
+كرة القدم، الألعاب الأولمبية، الرياضات القتالية والجزائرية.
+</p>
+</div>
+
+<div class="card" onclick="openSection('languages')">
+<h2>🌍 اللغات</h2>
+<p>
+العربية، الفرنسية، الإنجليزية، الألمانية، الإسبانية وغيرها.
+</p>
+</div>
+
+</div>
+
+<!-- الدين -->
+<div class="section" id="deen">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🕌 قسم الدين</h2>
+
+<div class="content-box">
+<h3 class="highlight">📖 القرآن الكريم</h3>
+<p id="quranText">
+جاري تحميل آية من القرآن الكريم...
+</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">📚 محتويات القسم</h3>
+<p>
+• الأحاديث النبوية  
+• السيرة النبوية  
+• أسماء الله الحسنى  
+• الأدعية والأذكار  
+• قصص الأنبياء  
+• الفقه الإسلامي  
+• العقيدة الإسلامية  
+• التجويد  
+• الإعجاز العلمي  
+• تاريخ الإسلام
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 اختبار سريع</h3>
+<p>كم عدد أركان الإسلام؟</p>
+
+<img class="quiz-img" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Kaaba_Masjid_Haraam_Makkah.jpg">
+
+<button onclick="correctAnswer()">5</button>
+<button onclick="wrongAnswer()">6</button>
+<button onclick="wrongAnswer()">7</button>
+</div>
+
+</div>
+
+<!-- العلوم -->
+<div class="section" id="science">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🔬 قسم العلوم</h2>
+
+<div class="content-box">
+<p>
+• الفيزياء وقوانين الحركة والطاقة  
+• الكيمياء والجدول الدوري  
+• علم الأحياء والجينات  
+• الرياضيات والجبر والهندسة  
+• الطب وتشريح جسم الإنسان  
+• الفلك والكون  
+• الصيدلة والتمريض
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 سؤال</h3>
+<p>ما أسرع شيء في الكون؟</p>
+
+<button onclick="correctAnswer()">الضوء</button>
+<button onclick="wrongAnswer()">الصوت</button>
+</div>
+
+</div>
+
+<!-- القانون -->
+<div class="section" id="law">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>⚖️ قسم القانون</h2>
+
+<div class="content-box">
+<p>
+• القانون المدني  
+• القانون الجنائي  
+• القانون الإداري  
+• القانون الدولي  
+• قانون العمل  
+• قانون التجارة  
+• مسابقات التوظيف الجزائرية
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 سؤال</h3>
+<p>ما هو أعلى قانون في الدولة؟</p>
+
+<button onclick="correctAnswer()">الدستور</button>
+<button onclick="wrongAnswer()">القانون المدني</button>
+</div>
+
+</div>
+
+<!-- التكنولوجيا -->
+<div class="section" id="tech">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>💻 قسم التكنولوجيا</h2>
+
+<div class="content-box">
+<p>
+• HTML - CSS - JavaScript  
+• Python - C++ - Java  
+• الذكاء الاصطناعي  
+• قواعد البيانات  
+• تطوير المواقع  
+• الشبكات  
+• الأمن السيبراني
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 سؤال</h3>
+<p>ما لغة تصميم صفحات الويب؟</p>
+
+<button onclick="correctAnswer()">CSS</button>
+<button onclick="wrongAnswer()">Python</button>
+</div>
+
+</div>
+
+<!-- الاقتصاد -->
+<div class="section" id="economy">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>💰 قسم الاقتصاد</h2>
+
+<div class="content-box">
+<p>
+• الاقتصاد الكلي والجزئي  
+• التسويق  
+• المحاسبة  
+• الإدارة  
+• المالية والبنوك  
+• الاقتصاد الجزائري
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<!-- الفنون -->
+<div class="section" id="arts">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🎨 قسم الفنون</h2>
+
+<div class="content-box">
+<p>
+• الأدب العربي  
+• الشعر  
+• الموسيقى  
+• الرسم  
+• المسرح  
+• السينما
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<!-- الرياضة -->
+<div class="section" id="sports">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🏋️ قسم الرياضة</h2>
+
+<div class="content-box">
+<p>
+• كرة القدم  
+• كرة السلة  
+• السباحة  
+• الألعاب الأولمبية  
+• الرياضات القتالية  
+• الرياضة الجزائرية
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<!-- اللغات -->
+<div class="section" id="languages">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🌍 قسم اللغات</h2>
+
+<div class="content-box">
+<p>
+• اللغة العربية  
+• الفرنسية  
+• الإنجليزية  
+• الإسبانية  
+• الألمانية  
+• الإيطالية
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<footer>
+© 2026 منصة المعرفة العربية - جميع الحقوق محفوظة
+</footer>
+
+<script>
+
+let points = localStorage.getItem("points") || 0;
+document.getElementById("points").innerText = points;
+
+function openSection(id){
+
+document.getElementById("mainCategories").style.display="none";
+
+document.querySelectorAll(".section").forEach(sec=>{
+sec.style.display="none";
+});
+
+document.getElementById(id).style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+function goHome(){
+
+document.querySelectorAll(".section").forEach(sec=>{
+sec.style.display="none";
+});
+
+document.getElementById("mainCategories").style.display="grid";
+
+window.scrollTo(0,0);
+
+}
+
+function login(){
+
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user && pass){
+
+localStorage.setItem("user",user);
+
+alert("تم تسجيل الدخول بنجاح: "+user);
+
+}else{
+alert("أدخل البيانات");
+}
+
+}
+
+function correctAnswer(){
+
+points++;
+
+localStorage.setItem("points",points);
+
+document.getElementById("points").innerText=points;
+
+alert("إجابة صحيحة +1 نقطة");
+
+}
+
+function wrongAnswer(){
+alert("إجابة خاطئة");
+}
+
+function searchCategory(){
+
+let value=document.getElementById("searchInput").value.trim();
+
+if(value==="") return;
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+if(card.innerText.includes(value)){
+card.style.border="2px solid gold";
+card.scrollIntoView({behavior:"smooth"});
+}else{
+card.style.border="1px solid #1e3859";
+}
+
+});
+
+}
+
+function showRandomQuiz(){
+
+let questions=[
+"كم عدد الكواكب في المجموعة الشمسية؟",
+"من هو مخترع الهاتف؟",
+"ما عاصمة الجزائر؟",
+"كم عدد أركان الإسلام؟"
+];
+
+let q=questions[Math.floor(Math.random()*questions.length)];
+
+alert("🧠 سؤال:\n\n"+q);
+
+}
+
+fetch("https://api.alquran.cloud/v1/ayah/262/ar.alafasy")
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("quranText").innerHTML=
+data.data.text + "<br><br><span class='highlight'>" +
+data.data.surah.name + "</span>";
+})
+.catch(()=>{
+document.getElementById("quranText").innerText=
+"تعذر تحميل الآية حالياً";
+});
+
+</script>
+
+</body>
+</html>
