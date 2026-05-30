@@ -700,3 +700,207 @@ document.getElementById("quranText").innerText=
 
 </body>
 </html>
+<div class="section" id="deen">
+
+    <div class="back" onclick="goHome()">⬅ العودة للمحراب الرئيسي</div>
+
+    <h2>🕌 قسم العلوم الإسلامية والشريعة</h2>
+    <hr style="border: 1px solid #ffcc00; margin-bottom: 20px;">
+
+    <div class="content-box" style="border-right: 5px solid #ffcc00;">
+        <h3 class="highlight">📖 1. المصحف الشريف الإلكتروني (مخزن داخلياً بالكامل)</h3>
+        <p>تصفح واقرأ القرآن الكريم مباشرة من ملفات الموقع وبسرعة فائقة دون الحاجة للاتصال بالإنترنت:</p>
+        
+        <div style="background: #252525; padding: 15px; border-radius: 8px; margin-top: 15px;">
+            <label for="localSurahSelect"><b>اختر السورة المباركة:</b></label><br>
+            <select id="localSurahSelect" onchange="showLocalSurah(this.value)" style="padding:10px; width:100%; border-radius:5px; margin-top:10px; background:#111; color:#ffcc00; font-size:1.1em; border:1px solid #ffcc00;">
+                <option value="">-- اضغط هنا وافتتح القراءة --</option>
+                <option value="1">1. سورة الفاتحة (مكية)</option>
+                <option value="2">2. سورة البقرة (مدنية)</option>
+                <option value="3">3. سورة الإخلاص (مكية)</option>
+                <option value="4">4. سورة الفلق (مكية)</option>
+                <option value="5">5. سورة الناس (مكية)</option>
+            </select>
+            
+            <div id="localSurahDisplay" style="margin-top:15px; max-height:400px; overflow-y:auto; padding:15px; background:#1a1a1a; border-radius:5px; text-align:right; direction:rtl; line-height:2.5; font-size:1.35em; color:#fff; border:1px dashed #555;">
+                <p style="text-align:center; color:#888;">الرجاء اختيار سورة من القائمة لعرض آياتها الشريفة فوراً.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">⚓ 2. العقيدة الإسلامية (أركان الإيمان)</h3>
+        <p>العقيدة هي الأساس الذي ينبني عليه الدين كله، وهي التصديق الجازم بأركان الإيمان الستة:</p>
+        <ul style="list-style-type: none; padding-right: 10px; line-height: 1.8;">
+            <li><b>• الإيمان بالله:</b> توحيد ربوبيته، وإلهيته، وأسمائه وصفاته العلى.</li>
+            <li><b>• الإيمان بالملائكة:</b> مخلوقات نورانية لا تعصي الله ما أمرها (كجبريل وميكائيل).</li>
+            <li><b>• الإيمان بالكتب السماوية:</b> التوراة، الإنجيل، الزبور، صحف إبراهيم، والقرآن المهيمن عليها.</li>
+            <li><b>• الإيمان بالرسل:</b> من أولهم آدم ونوح إلى خاتمهم محمد ﷺ.</li>
+            <li><b>• الإيمان بالاليوم الآخر:</b> التصديق بالقبر، البعث، الحساب، الميزان، الصراط، والجنة أو النار.</li>
+            <li><b>• الإيمان بالقدر:</b> الرضا والتسليم بأن كل خير أو شر في الكون يجري بمشيئة الله وخلقه.</li>
+        </ul>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">⚖️ 3. الفقه الإسلامي وأحكام الشريعة</h3>
+        <p>هو العلم بالأحكام الشرعية العملية المستنبطة من أدلتها التفصيلية، وينقسم إلى:</p>
+        <p><b>أولاً: فقه العبادات:</b> يضبط علاقة الإنسان بربه، كأحكام الطهارة، الصلوات المفروضة والسنن، زكاة الأموال ومصارفها، صيام رمضان، وأحكام الحج والعمرة.</p>
+        <p><b>ثانياً: فقه المعاملات:</b> يضبط العلاقات البشرية، ويشمل أحكام البيع والشراء، الإجارة، الزواج والطلاق، والمواريث (علم الفرائض)، والقصاص لحفظ الأمن العام.</p>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">💬 4. الأحاديث النبوية الشريفة (السنة النبوية)</h3>
+        <p>السنة هي المصدر الثاني للتشريع، وهي كل ما ورد عن النبي ﷺ من قول، فعل، تقرير، أو صفة.</p>
+        <blockquote style="background: #202020; padding: 10px; border-right: 4px solid #ffcc00; margin: 10px 0;">
+            <b>حديث قولي أساسي:</b> قال رسول الله ﷺ: "إنَما الأعمال بالنِيَاتِ... " [رواه البخاري ومسلم].
+        </blockquote>
+        <p><b>أمهات كتب الحديث المعتمدة:</b> صحيح البخاري، صحيح مسلم، سنن أبي داود، سنن الترمذي، سنن النسائي، وسنن ابن ماجه.</p>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">📜 5. السيرة النبوية المطهرة</h3>
+        <p>دراسة حياة النبي ﷺ منذ ولادته حتى وفاته لأخذ الأسوة والقدوة:</p>
+        <p><b>• العهد المكي (53 سنة):</b> ولد ﷺ بمكة عام الفيل، ونشأ يتيماً، ونزل عليه الوحي في غار حراء وهو في الأربعين.</p>
+        <p><b>• العهد المدني (10 سنوات):</b> بدأ بالهجرة النبوية إلى المدينة المنورة، وبناء الدولة الإسلامية، والمؤاخاة، وتأسيس الجيش والدفاع في الغزوات حتى فتح مكة ووفاته في 11 هـ.</p>
+    </div>
+    <div class="content-box">
+        <h3 class="highlight">🎙️ 6. علم تجويد وترتيل القرآن</h3>
+        <p>هو إعطاء كل حرف حقه ومستحقه تلاوةً وضبطاً لمنع الخطأ في كتاب الله. من قواعده الجوهرية:</p>
+        <p>• <b>أحكام النون الساكنة والتنوين:</b> الإظهار، الإدغام (بغنة وبغير غنة)، الإقلاب (إلى ميم)، والإخفاء.</p>
+        <p>• <b>أحكام الميم الساكنة:</b> الإخفاء الشفوي، إدغام المثلين الصغير، والإظهار الشفوي.</p>
+        <p>• <b>المدود:</b> كالمَد الطبيعي، والمَد المتصل والمنفصل، ومَد الكلم الصامت بسبب الهمز أو السكون.</p>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">📿 7. حصن المسلم من الأدعية والأذكار</h3>
+        <p>الصلة اليومية للعبد لطلب الحفظ والطمأنينة:</p>
+        <p>• <b>أذكار الصباح والمساء:</b> آية الكرسي، المعوذات (3 مرات)، "بِسمِ اللَهِ الَذِي لَا يَضر مَعَ اسمِهِ شَيءٌ فِي الأَرضِ وَلَا فِي السَمَاءِ...".</p>
+        <p>• <b>أذكار أدبار الصلوات:</b> الاستغفار ثلاثاً، آية الكرسي، والتسبيح والتحميد والتكبير (33 مرة).</p>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">🐫 8. قصص الأنبياء والرسل عليهم السلام</h3>
+        <p>قصص حقيقية مليئة بالعبر والمعجزات الإلهية لدعم الثبات:</p>
+        <p>• <b>آدم:</b> أبو البشر وبداية الاستخلاف. • <b>نوح:</b> صاحب السفينة والطوفان. • <b>إبراهيم:</b> خليل الله وباني الكعبة. • <b>موسى:</b> كليم الله ومعجزة انشقاق البحر. • <b>يوسف:</b> الصديق المبتلى بالبئر والسجن. • <b>عيسى:</b> كلمة الله المعجز في ولادته وكلامه في المهد.</p>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">⚔️ 9. التاريخ والحضارة الإسلامية</h3>
+        <p>يوثق الامتداد الزمني والمكاني للأمة الإسلامية:</p>
+        <p>• <b>الخلافة الراشدة:</b> عهد الخلفاء الأربعة أبو بكر، عمر، عثمان، وعلي (رضي الله عنهم)، وفيه توسعت الدولة وجمع المصحف.</p>
+        <p>• <b>الدولتان الأموية والعباسية:</b> عهد الفتوحات الكبرى نحو الأندلس والصين، يليه العصر الذهبي للعلوم والترجمة في بغداد.</p>
+        <p>• <b>الإسلام في الجزائر:</b> الفتح المبارك لبلاد المغرب على يد عقبة بن نافع وتأسيس القيروان، تلاها قيام حواضر علمية ودول كبرى كالدولة الرستمية والموحدية.</p>
+    </div>
+
+    <div class="content-box">
+        <h3 class="highlight">🌌 10. الإعجاز العلمي في القرآن والسنة</h3>
+        <p>إشارات كونية وطبية سبقت العلم الحديث بقرون طويلة:</p>
+        <p>• <b>نطاق الأجنة:</b> تحديد أطوار الجنين (نطفة، علقة، مضغة، عظام) بدقة متناهية كما في سورة المؤمنون.</p>
+        <p>• <b>علم الفلك:</b> اتساع الكون المستمر ﴿وَالسَمَاءَ بَنَينَاهَا بِأَيدٍ وَإِنَا لَموسِعونَ﴾ [الذاريات: 47].</p>
+        <p>• <b>البحار:</b> البرزخ المائي الذي يمنع اختلاط مياه البحر المالح بالبحر العذب عند الالتقاء.</p>
+    </div>
+    <div class="books" style="background: #202020; padding: 15px; border-radius: 5px; margin-top: 15px;">
+        📚 <b>المكتبة الإسلامية المقترحة:</b><br>
+        1. كتاب <i>"الرحيق المختوم"</i> للمباركفوري (أقوى مراجع السيرة النبوية).<br>
+        2. كتاب <i>"الأربعون النووية"</i> للإمام النووي (أصول الأحاديث الشريفة).<br>
+        3. كتاب <i>"تيسير الكريم الرحمن في تفسير كلام المنان"</i> للشيخ السعدي.
+    </div>
+
+    <div class="quiz" style="margin-top: 20px; background: #1f2d3d; padding: 20px; border-radius: 8px; text-align: center;">
+        <h3>🧠 الاختبار الديني السريع</h3>
+        <p>كم عدد أركان الإسلام الأساسية؟</p>
+        <img class="quiz-img" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Kaaba_Masjid_Haraam_Makkah.jpg" alt="الكعبة المشرفة" style="max-width: 100%; height: 180px; border-radius: 5px; margin: 10px 0;">
+        <br>
+        <button onclick="alert('✅ إجابة صحيحة! بارك الله فيك، أركان الإسلام خمسة.')" style="padding: 10px 20px; margin: 5px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">5 أركان</button>
+        <button onclick="alert('❌ إجابة خاطئة! الإيمان هو الذي يحتوي على 6 أركان، أما الإسلام فأركانه 5.')" style="padding: 10px 20px; margin: 5px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">6 أركان</button>
+        <button onclick="alert('❌ إجابة خاطئة! أركان الإسلام خمسة.')" style="padding: 10px 20px; margin: 5px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">7 أركان</button>
+    </div>
+
+</div>
+
+<script>
+const quranDatabase = {
+    "1": {
+        name: "الفاتحة",
+        bismillah: false,
+        verses: [
+            "بِسمِ اللَهِ الرَحمَٰنِ الرَحِيمِ",
+            "الحَمد لِلَهِ رَبِ العَالَمِينَ",
+            "الرَحمَٰنِ الرَحِيمِ",
+            "مَالِكِ يَومِ الدِينِ",
+            "إِيَاكَ نَعبد وَإِيَاكَ نَستَعِين",
+            "اهدِنَا الصِرَاطَ المستَقِيمَ",
+            "صِرَاطَ الَذِينَ أَنعَمتَ عَلَيهِم غَيرِ المَغضوبِ عَلَيهِم وَلَا الضَالِينَ"
+        ]
+    },
+    "2": {
+        name: "البقرة (مقتطفات)",
+        bismillah: true,
+        verses: [
+            "الم",
+            "ذَٰلِكَ الكِتَاب لَا رَيبَ ۛ فِيهِ ۛ هدًى لِلمتَقِينَ",
+            "الَذِينَ يؤمِنونَ بِالغَيبِ وَيقِيمونَ الصَلَاةَ وَمِمَا رَزَقنَاهم ينفِقونَ"
+        ]
+    },
+    "3": {
+        name: "الإخلاص",
+        bismillah: true,
+        verses: [
+            "قل هوَ اللَه أَحَدٌ",
+            "اللَه الصَمَد",
+            "لَم يَلِد وَلَم يولَد",
+            "وَلَم يَكن لَه كفوًا أَحَدٌ"
+        ]
+    },
+    "4": {
+        name: "الفلق",
+        bismillah: true,
+        verses: [
+            "قل أَعوذ بِرَبِ الفَلَقِ",
+            "مِن شَرِ مَا خَلَقَ",
+            "وَمِن شَرِ غَاسِقٍ إِذَا وَقَبَ",
+            "وَمِن شَرِ النَفَاثَاتِ فِي العقَدِ",
+            "وَمِن شَرِ حَاسِدٍ إِذَا حَسَدَ"
+        ]
+    },
+    "5": {
+        name: "الناس",
+        bismillah: true,
+        verses: [
+            "قل أَعوذ بِرَبِ النَاسِ",
+            "مَلِكِ النَاسِ",
+            "إِلَٰهِ النَاسِ",
+            "مِن شَرِ الوَسوَاسِ الخَنَاسِ",
+            "الَذِي يوَسوِس فِي صدورِ النَاسِ",
+            "مِنَ الجِنَةِ وَالنَاسِ"
+        ]
+    }
+};
+
+function showLocalSurah(surahId) {
+    const display = document.getElementById("localSurahDisplay");
+    if (!surahId || !quranDatabase[surahId]) {
+        display.innerHTML = '<p style="text-align:center; color:#888;">الرجاء اختيار سورة من القائمة لعرض آياتها الشريف
+
+
+function showLocalSurah(surahId) {
+    const display = document.getElementById("localSurahDisplay");
+    if (!surahId || !quranDatabase[surahId]) {
+        display.innerHTML = '<p style="text-align:center; color:#888;">الرجاء اختيار سورة من القائمة لعرض آياتها الشريفة فوراً.</p>';
+        return;
+    }
+    
+    const surah = quranDatabase[surahId];
+    let html = `<h4 style="text-align:center; color:#ffcc00; margin-bottom:15px;">✨ سورة ${surah.name} ✨</h4>`;
+    
+    if (surah.bismillah) {
+        html += `<p style="text-align:center; color:#ffcc00; font-weight:bold; font-size:1.3em; margin-bottom:15px;">بِسمِ اللَهِ الرَحمَٰنِ الرَحِيمِ</p>`;
+    }
+    
+    surah.verses.forEach((verse, index) => {
+        html += ` ${verse} <span style="color:#ffcc00; font-weight:bold; font-size:0.85em;">﴿${index + 1}﴾</span> `;
+    });
+    
+    display.innerHTML = html;
+}
+</script>
