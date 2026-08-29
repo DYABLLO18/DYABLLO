@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>منصة المعرفة العربية</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Tahoma, Arial, sans-serif;
+background:#07111f;
+color:#fff;
+overflow-x:hidden;
+}
+
+:root{
+--gold:#d4af37;
+--dark:#081321;
+--card:#10233b;
+--light:#d6d6d6;
+}
+
+header{
+background:linear-gradient(90deg,#081321,#10233b);
+padding:25px;
+text-align:center;
+border-bottom:2px solid var(--gold);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+header h1{
+color:var(--gold);
+font-size:35px;
+margin-bottom:20px;
+}
+
+.search-box{
+width:90%;
+max-width:700px;
+margin:auto;
+display:flex;
+gap:10px;
+}
+
+.search-box input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#0d1d31;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.search-box button{
+padding:15px 25px;
+border:none;
+border-radius:12px;
+background:var(--gold);
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}
+
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+flex-wrap:wrap;
+gap:10px;
+background:#0b1728;
+border-bottom:1px solid #23354f;
+}
+
+.points{
+color:var(--gold);
+font-weight:bold;
+}
+
+.login-box{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+align-items:center;
+}
+
+.login-box input{
+padding:10px;
+border:none;
+border-radius:10px;
+background:#132740;
+color:white;
+}
+
+.login-box button{
+background:var(--gold);
+border:none;
+padding:10px 15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.login-box button.secondary{
+background:transparent;
+border:1px solid var(--gold);
+color:var(--gold);
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:30px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+border-radius:20px;
+transition:0.3s;
+border:1px solid #1e3859;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:var(--gold);
+box-shadow:0 0 20px rgba(212,175,55,0.2);
+}
+
+.card h2{
+color:var(--gold);
+margin-bottom:15px;
+font-size:24px;
+}
+
+.card p{
+color:var(--light);
+line-height:1.8;
+}
+
+.test-btn{
+display:block;
+margin:20px auto;
+background:var(--gold);
+color:#000;
+padding:15px 25px;
+border:none;
+border-radius:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.section{
+padding:30px;
+display:none;
+animation:fade 0.4s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.section h2{
+color:var(--gold);
+margin-bottom:20px;
+font-size:35px;
+}
+
+.content-box{
+background:#0f2035;
+padding:20px;
+border-radius:18px;
+margin-bottom:20px;
+line-height:2;
+border:1px solid #203754;
+}
+
+.content-box h3{
+margin-bottom:10px;
+}
+
+.content-box ul{
+list-style:none;
+padding-right:10px;
+line-height:1.9;
+}
+
+.content-box blockquote{
+background:#132740;
+padding:12px;
+border-right:4px solid var(--gold);
+margin:10px 0;
+border-radius:8px;
+}
+
+.books{
+background:#12263f;
+padding:20px;
+border-radius:18px;
+margin-bottom:20px;
+color:#bbb;
+font-size:18px;
+text-align:center;
+line-height:1.8;
+}
+
+.quiz{
+background:#0f2035;
+padding:20px;
+border-radius:18px;
+text-align:center;
+}
+
+.quiz button{
+margin:5px;
+padding:10px 20px;
+background:var(--gold);
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.back{
+margin-bottom:20px;
+display:inline-block;
+background:#132740;
+padding:10px 20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#06101b;
+border-top:1px solid #203754;
+color:#aaa;
+}
+
+.highlight{
+color:var(--gold);
+font-weight:bold;
+}
+
+img.quiz-img{
+width:100%;
+max-width:300px;
+border-radius:15px;
+margin:15px 0;
+}
+
+.surah-select{
+padding:12px;
+width:100%;
+border-radius:8px;
+margin-top:10px;
+background:#0d1d31;
+color:var(--gold);
+font-size:1.05em;
+border:1px solid var(--gold);
+}
+
+.surah-display{
+margin-top:15px;
+max-height:420px;
+overflow-y:auto;
+padding:18px;
+background:#0d1d31;
+border-radius:10px;
+text-align:right;
+direction:rtl;
+line-height:2.6;
+font-size:1.3em;
+color:#fff;
+border:1px dashed #23354f;
+}
+
+@media(max-width:700px){
+header h1{
+font-size:26px;
+}
+
+.section h2{
+font-size:28px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 منصة المعرفة العربية</h1>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="ابحث عن مجال أو درس...">
+<button onclick="searchCategory()">بحث</button>
+</div>
+</header>
+
+<div class="top-bar">
+
+<div class="points">
+⭐ النقاط: <span id="points">0</span>
+</div>
+
+<div class="login-box" id="loginBox">
+<input type="text" id="username" placeholder="اسم المستخدم">
+<input type="password" id="password" placeholder="كلمة السر">
+<button onclick="login()">دخول</button>
+<button class="secondary" onclick="register()">تسجيل جديد</button>
+</div>
+
+<div class="login-box" id="userBox" style="display:none;">
+<span>👋 أهلاً، <b id="welcomeName" style="color:var(--gold);"></b></span>
+<button onclick="logout()">خروج</button>
+</div>
+
+</div>
+
+<button class="test-btn" onclick="showRandomQuiz()">🧠 اختبر معلوماتك</button>
+
+<div class="categories" id="mainCategories">
+
+<div class="card" onclick="openSection('deen')">
+<h2>🕌 الدين</h2>
+<p>
+القرآن الكريم، الأحاديث، العقيدة، الفقه، السيرة، الأذكار، التجويد والمزيد.
+</p>
+</div>
+
+<div class="card" onclick="openSection('science')">
+<h2>🔬 العلوم</h2>
+<p>
+الفيزياء، الكيمياء، الأحياء، الرياضيات، الطب، الفلك وغيرها.
+</p>
+</div>
+
+<div class="card" onclick="openSection('law')">
+<h2>⚖️ القانون</h2>
+<p>
+القانون المدني والجنائي والإداري والدولي وقوانين الجزائر.
+</p>
+</div>
+
+<div class="card" onclick="openSection('tech')">
+<h2>💻 التكنولوجيا</h2>
+<p>
+البرمجة، الذكاء الاصطناعي، الشبكات، الأمن السيبراني.
+</p>
+</div>
+
+<div class="card" onclick="openSection('economy')">
+<h2>💰 الاقتصاد</h2>
+<p>
+المحاسبة، التسويق، الإدارة، البنوك والاقتصاد الجزائري.
+</p>
+</div>
+
+<div class="card" onclick="openSection('arts')">
+<h2>🎨 الفنون</h2>
+<p>
+الشعر، الأدب، الموسيقى، المسرح، السينما والفنون البصرية.
+</p>
+</div>
+
+<div class="card" onclick="openSection('sports')">
+<h2>🏋️ الرياضة</h2>
+<p>
+كرة القدم، الألعاب الأولمبية، الرياضات القتالية والجزائرية.
+</p>
+</div>
+
+<div class="card" onclick="openSection('languages')">
+<h2>🌍 اللغات</h2>
+<p>
+العربية، الفرنسية، الإنجليزية، الألمانية، الإسبانية وغيرها.
+</p>
+</div>
+
+</div>
+
+<!-- الدين -->
+<div class="section" id="deen">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🕌 قسم الدين</h2>
+
+<div class="content-box">
+<h3 class="highlight">📖 آية عشوائية</h3>
+<p id="quranText">
+جاري تحميل آية من القرآن الكريم...
+</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">📖 المصحف الشريف كاملاً (114 سورة)</h3>
+<p>اختر أي سورة من القائمة وستظهر لك آياتها كاملة فوراً:</p>
+
+<label for="localSurahSelect"><b>اختر السورة المباركة:</b></label><br>
+<select id="localSurahSelect" class="surah-select" onchange="showLocalSurah(this.value)">
+<option value="">-- جاري تحميل قائمة السور... --</option>
+</select>
+
+<div id="localSurahDisplay" class="surah-display">
+<p style="text-align:center;color:#888;">الرجاء اختيار سورة من القائمة لعرض آياتها الشريفة.</p>
+</div>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">⚓ العقيدة الإسلامية (أركان الإيمان)</h3>
+<p>العقيدة هي الأساس الذي ينبني عليه الدين كله، وهي التصديق الجازم بأركان الإيمان الستة:</p>
+<ul>
+<li>• <b>الإيمان بالله:</b> توحيد ربوبيته، وإلهيته، وأسمائه وصفاته العلى.</li>
+<li>• <b>الإيمان بالملائكة:</b> مخلوقات نورانية لا تعصي الله ما أمرها (كجبريل وميكائيل).</li>
+<li>• <b>الإيمان بالكتب السماوية:</b> التوراة، الإنجيل، الزبور، صحف إبراهيم، والقرآن المهيمن عليها.</li>
+<li>• <b>الإيمان بالرسل:</b> من أولهم آدم ونوح إلى خاتمهم محمد ﷺ.</li>
+<li>• <b>الإيمان باليوم الآخر:</b> التصديق بالقبر، البعث، الحساب، الميزان، الصراط، والجنة أو النار.</li>
+<li>• <b>الإيمان بالقدر:</b> الرضا والتسليم بأن كل خير أو شر في الكون يجري بمشيئة الله وخلقه.</li>
+</ul>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">⚖️ الفقه الإسلامي وأحكام الشريعة</h3>
+<p>هو العلم بالأحكام الشرعية العملية المستنبطة من أدلتها التفصيلية، وينقسم إلى:</p>
+<p><b>أولاً - فقه العبادات:</b> يضبط علاقة الإنسان بربه، كأحكام الطهارة، الصلوات المفروضة والسنن، زكاة الأموال ومصارفها، صيام رمضان، وأحكام الحج والعمرة.</p>
+<p><b>ثانياً - فقه المعاملات:</b> يضبط العلاقات البشرية، ويشمل أحكام البيع والشراء، الإجارة، الزواج والطلاق، والمواريث (علم الفرائض)، والقصاص لحفظ الأمن العام.</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">💬 الأحاديث النبوية الشريفة (السنة النبوية)</h3>
+<p>السنة هي المصدر الثاني للتشريع، وهي كل ما ورد عن النبي ﷺ من قول، فعل، تقرير، أو صفة.</p>
+<blockquote>
+<b>حديث قولي أساسي:</b> قال رسول الله ﷺ: "إنما الأعمال بالنيات..." [رواه البخاري ومسلم].
+</blockquote>
+<p><b>أمهات كتب الحديث المعتمدة:</b> صحيح البخاري، صحيح مسلم، سنن أبي داود، سنن الترمذي، سنن النسائي، وسنن ابن ماجه.</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">📜 السيرة النبوية المطهرة</h3>
+<p>دراسة حياة النبي ﷺ منذ ولادته حتى وفاته لأخذ الأسوة والقدوة:</p>
+<p><b>• العهد المكي (53 سنة):</b> ولد ﷺ بمكة عام الفيل، ونشأ يتيماً، ونزل عليه الوحي في غار حراء وهو في الأربعين.</p>
+<p><b>• العهد المدني (10 سنوات):</b> بدأ بالهجرة النبوية إلى المدينة المنورة، وبناء الدولة الإسلامية، والمؤاخاة، حتى فتح مكة ووفاته ﷺ في السنة الحادية عشرة للهجرة.</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">🎙️ علم التجويد وترتيل القرآن</h3>
+<p>هو إعطاء كل حرف حقه ومستحقه تلاوةً وضبطاً لمنع الخطأ في كتاب الله. من قواعده الجوهرية:</p>
+<p>• <b>أحكام النون الساكنة والتنوين:</b> الإظهار، الإدغام (بغنة وبغير غنة)، الإقلاب، والإخفاء.</p>
+<p>• <b>أحكام الميم الساكنة:</b> الإخفاء الشفوي، إدغام المثلين الصغير، والإظهار الشفوي.</p>
+<p>• <b>المدود:</b> كالمَد الطبيعي، والمَد المتصل والمنفصل، ومَد الكلم الصامت بسبب الهمز أو السكون.</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">📿 حصن المسلم من الأدعية والأذكار</h3>
+<p>الصلة اليومية للعبد لطلب الحفظ والطمأنينة:</p>
+<p>• <b>أذكار الصباح والمساء:</b> آية الكرسي، المعوذات (3 مرات)، "بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء...".</p>
+<p>• <b>أذكار أدبار الصلوات:</b> الاستغفار ثلاثاً، آية الكرسي، والتسبيح والتحميد والتكبير (33 مرة).</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">🐫 قصص الأنبياء والرسل عليهم السلام</h3>
+<p>قصص حقيقية مليئة بالعبر والمعجزات الإلهية:</p>
+<p>• <b>آدم:</b> أبو البشر وبداية الاستخلاف. • <b>نوح:</b> صاحب السفينة والطوفان. • <b>إبراهيم:</b> خليل الله وباني الكعبة. • <b>موسى:</b> كليم الله ومعجزة انشقاق البحر. • <b>يوسف:</b> الصديق المبتلى بالبئر والسجن. • <b>عيسى:</b> كلمة الله المعجز في ولادته وكلامه في المهد.</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">⚔️ التاريخ والحضارة الإسلامية</h3>
+<p>يوثق الامتداد الزمني والمكاني للأمة الإسلامية:</p>
+<p>• <b>الخلافة الراشدة:</b> عهد الخلفاء الأربعة أبو بكر، عمر، عثمان، وعلي رضي الله عنهم.</p>
+<p>• <b>الدولتان الأموية والعباسية:</b> عهد الفتوحات الكبرى نحو الأندلس والصين، يليه العصر الذهبي للعلوم والترجمة في بغداد.</p>
+</div>
+
+<div class="content-box">
+<h3 class="highlight">🌌 الإعجاز العلمي في القرآن والسنة</h3>
+<p>إشارات كونية وطبية سبقت العلم الحديث بقرون طويلة:</p>
+<p>• <b>أطوار الجنين:</b> تحديد أطوار الجنين (نطفة، علقة، مضغة، عظام) بدقة متناهية كما في سورة المؤمنون.</p>
+<p>• <b>علم الفلك:</b> اتساع الكون المستمر ﴿وَالسَمَاءَ بَنَينَاهَا بِأَيدٍ وَإِنَا لَموسِعونَ﴾ [الذاريات: 47].</p>
+<p>• <b>البحار:</b> البرزخ المائي الذي يمنع اختلاط مياه البحر المالح بالبحر العذب عند الالتقاء.</p>
+</div>
+
+<div class="books" id="deenBooks">
+📚 الكتب: أضف كتبك الدينية هنا لاحقاً...
+</div>
+
+<div class="quiz">
+<h3>🧠 اختبار سريع</h3>
+<p>كم عدد أركان الإسلام؟</p>
+
+<img class="quiz-img" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Kaaba_Masjid_Haraam_Makkah.jpg" alt="الكعبة المشرفة">
+
+<button onclick="correctAnswer()">5</button>
+<button onclick="wrongAnswer()">6</button>
+<button onclick="wrongAnswer()">7</button>
+</div>
+
+</div>
+
+<!-- العلوم -->
+<div class="section" id="science">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🔬 قسم العلوم</h2>
+
+<div class="content-box">
+<p>
+• الفيزياء وقوانين الحركة والطاقة<br>
+• الكيمياء والجدول الدوري<br>
+• علم الأحياء والجينات<br>
+• الرياضيات والجبر والهندسة<br>
+• الطب وتشريح جسم الإنسان<br>
+• الفلك والكون<br>
+• الصيدلة والتمريض
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 سؤال</h3>
+<p>ما أسرع شيء في الكون؟</p>
+
+<button onclick="correctAnswer()">الضوء</button>
+<button onclick="wrongAnswer()">الصوت</button>
+</div>
+
+</div>
+
+<!-- القانون -->
+<div class="section" id="law">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>⚖️ قسم القانون</h2>
+
+<div class="content-box">
+<p>
+• القانون المدني<br>
+• القانون الجنائي<br>
+• القانون الإداري<br>
+• القانون الدولي<br>
+• قانون العمل<br>
+• قانون التجارة<br>
+• مسابقات التوظيف الجزائرية
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 سؤال</h3>
+<p>ما هو أعلى قانون في الدولة؟</p>
+
+<button onclick="correctAnswer()">الدستور</button>
+<button onclick="wrongAnswer()">القانون المدني</button>
+</div>
+
+</div>
+
+<!-- التكنولوجيا -->
+<div class="section" id="tech">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>💻 قسم التكنولوجيا</h2>
+
+<div class="content-box">
+<p>
+• HTML - CSS - JavaScript<br>
+• Python - C++ - Java<br>
+• الذكاء الاصطناعي<br>
+• قواعد البيانات<br>
+• تطوير المواقع<br>
+• الشبكات<br>
+• الأمن السيبراني
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+<div class="quiz">
+<h3>🧠 سؤال</h3>
+<p>ما لغة تصميم صفحات الويب؟</p>
+
+<button onclick="correctAnswer()">CSS</button>
+<button onclick="wrongAnswer()">Python</button>
+</div>
+
+</div>
+
+<!-- الاقتصاد -->
+<div class="section" id="economy">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>💰 قسم الاقتصاد</h2>
+
+<div class="content-box">
+<p>
+• الاقتصاد الكلي والجزئي<br>
+• التسويق<br>
+• المحاسبة<br>
+• الإدارة<br>
+• المالية والبنوك<br>
+• الاقتصاد الجزائري
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<!-- الفنون -->
+<div class="section" id="arts">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🎨 قسم الفنون</h2>
+
+<div class="content-box">
+<p>
+• الأدب العربي<br>
+• الشعر<br>
+• الموسيقى<br>
+• الرسم<br>
+• المسرح<br>
+• السينما
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<!-- الرياضة -->
+<div class="section" id="sports">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🏋️ قسم الرياضة</h2>
+
+<div class="content-box">
+<p>
+• كرة القدم<br>
+• كرة السلة<br>
+• السباحة<br>
+• الألعاب الأولمبية<br>
+• الرياضات القتالية<br>
+• الرياضة الجزائرية
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<!-- اللغات -->
+<div class="section" id="languages">
+
+<div class="back" onclick="goHome()">⬅ العودة</div>
+
+<h2>🌍 قسم اللغات</h2>
+
+<div class="content-box">
+<p>
+• اللغة العربية<br>
+• الفرنسية<br>
+• الإنجليزية<br>
+• الإسبانية<br>
+• الألمانية<br>
+• الإيطالية
+</p>
+</div>
+
+<div class="books">
+📚 الكتب: قريباً...
+</div>
+
+</div>
+
+<footer>
+© 2026 منصة المعرفة العربية - جميع الحقوق محفوظة
+</footer>
+
+<script>
+
+/* =========================================================
+   الوظائف الأساسية للموقع - تشتغل دائماً بدون إنترنت
+   ========================================================= */
+window.openSection = function(id){
+  document.getElementById("mainCategories").style.display = "none";
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.style.display = "none";
+  });
+  document.getElementById(id).style.display = "block";
+  window.scrollTo(0,0);
+};
+
+window.goHome = function(){
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.style.display = "none";
+  });
+  document.getElementById("mainCategories").style.display = "grid";
+  window.scrollTo(0,0);
+};
+
+window.searchCategory = function(){
+  let value = document.getElementById("searchInput").value.trim();
+  if(value === "") return;
+
+  let cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    if(card.innerText.includes(value)){
+      card.style.border = "2px solid gold";
+      card.scrollIntoView({behavior:"smooth"});
+    }else{
+      card.style.border = "1px solid #1e3859";
+    }
+  });
+};
+
+window.showRandomQuiz = function(){
+  let questions = [
+    "كم عدد الكواكب في المجموعة الشمسية؟",
+    "من هو مخترع الهاتف؟",
+    "ما عاصمة الجزائر؟",
+    "كم عدد أركان الإسلام؟"
+  ];
+  let q = questions[Math.floor(Math.random()*questions.length)];
+  alert("🧠 سؤال:\n\n" + q);
+};
+
+window.wrongAnswer = function(){
+  alert("❌ إجابة خاطئة");
+};
+
+// نقاط مؤقتة تُستخدم فقط إذا لم يكن المستخدم مسجل دخول أو لم تتوفر خدمة الحسابات بعد
+let localPoints = 0;
+
+window.correctAnswer = async function(){
+  // لو نظام الحسابات (Firebase) اشتغل، استخدم دالته الخاصة بحفظ النقاط في قاعدة البيانات
+  if(window.__saveCorrectAnswer){
+    await window.__saveCorrectAnswer();
+    return;
+  }
+  // خلاف ذلك، احسب النقطة محلياً بدون حفظ دائم
+  localPoints++;
+  document.getElementById("points").innerText = localPoints;
+  alert("✅ إجابة صحيحة +1 نقطة (نقاط مؤقتة، سجل دخولك لحفظها بشكل دائم)");
+};
+
+/* =========================================================
+   القرآن الكريم - آية عشوائية + كل السور الـ114
+   (لا يحتاج Firebase، فقط اتصال إنترنت عادي)
+   ========================================================= */
+async function loadRandomAyah(){
+  const randomNum = Math.floor(Math.random()*6236) + 1;
+  try{
+    const res = await fetch("https://api.alquran.cloud/v1/ayah/" + randomNum + "/quran-uthmani");
+    const data = await res.json();
+    document.getElementById("quranText").innerHTML =
+      data.data.text + "<br><br><span class='highlight'>سورة " + data.data.surah.name + "</span>";
+  }catch(e){
+    document.getElementById("quranText").innerText = "تعذر تحميل الآية حالياً، تحقق من اتصالك بالإنترنت";
+  }
+}
+
+async function loadSurahList(){
+  const select = document.getElementById("localSurahSelect");
+  try{
+    const res = await fetch("https://api.alquran.cloud/v1/surah");
+    const data = await res.json();
+    select.innerHTML = '<option value="">-- اختر سورة --</option>';
+    data.data.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s.number;
+      opt.textContent = s.number + ". سورة " + s.name + " (" + (s.revelationType === "Meccan" ? "مكية" : "مدنية") + ")";
+      select.appendChild(opt);
+    });
+  }catch(e){
+    select.innerHTML = '<option value="">تعذر تحميل قائمة السور، تحقق من الاتصال</option>';
+  }
+}
+
+const surahCache = {};
+
+window.showLocalSurah = async function(surahId){
+  const display = document.getElementById("localSurahDisplay");
+
+  if(!surahId){
+    display.innerHTML = '<p style="text-align:center;color:#888;">الرجاء اختيار سورة من القائمة لعرض آياتها الشريفة.</p>';
+    return;
+  }
+
+  display.innerHTML = '<p style="text-align:center;color:#888;">⏳ جاري تحميل السورة...</p>';
+
+  try{
+    let surah = surahCache[surahId];
+    if(!surah){
+      const res = await fetch("https://api.alquran.cloud/v1/surah/" + surahId + "/quran-uthmani");
+      const data = await res.json();
+      surah = data.data;
+      surahCache[surahId] = surah;
+    }
+
+    let html = '<h4 style="text-align:center;color:var(--gold);margin-bottom:15px;">✨ سورة ' + surah.name + ' (' + surah.englishName + ') ✨</h4>';
+
+    surah.ayahs.forEach(ayah => {
+      html += " " + ayah.text + ' <span style="color:var(--gold);font-weight:bold;font-size:0.85em;">﴿' + ayah.numberInSurah + '﴾</span> ';
+    });
+
+    display.innerHTML = html;
+  }catch(e){
+    display.innerHTML = '<p style="text-align:center;color:#f66;">تعذر تحميل السورة، تحقق من اتصالك بالإنترنت وحاول مجدداً.</p>';
+  }
+};
+
+loadRandomAyah();
+loadSurahList();
+
+/* =========================================================
+   مؤقتاً: أزرار الدخول تعطي رسالة انتظار لحين اكتمال تحميل
+   نظام الحسابات (Firebase) - يتم استبدالها فور نجاح التحميل
+   ========================================================= */
+window.login = function(){ alert("⏳ نظام الحسابات لا يزال قيد التحميل، انتظر لحظة وحاول مجدداً"); };
+window.register = window.login;
+window.logout = function(){};
+
+</script>
+
+<script type="module">
+
+/* =========================================================
+   Firebase - تسجيل دخول حقيقي مرتبط بقاعدة بيانات
+   هذا الجزء يحتاج اتصال إنترنت فعلي بخوادم Google؛ لو فشل
+   التحميل (بسبب معاينة مقيدة أو انقطاع شبكة) يبقى باقي
+   الموقع (الأقسام، البحث، القرآن، الاختبارات) شغّال طبيعي.
+   ========================================================= */
+try{
+
+  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+  const {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+  const {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    increment
+  } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAlY2J5raDUSjfYO4huc3ZOSCtuVs2VoBw",
+    authDomain: "dyabllo.firebaseapp.com",
+    projectId: "dyabllo",
+    storageBucket: "dyabllo.firebasestorage.app",
+    messagingSenderId: "480527759633",
+    appId: "1:480527759633:web:afda9b73f34ac21581f4b0",
+    measurementId: "G-R8CRHQ0R07"
+  };
+
+  const firebaseApp = initializeApp(firebaseConfig);
+  const auth = getAuth(firebaseApp);
+  const db = getFirestore(firebaseApp);
+
+  let currentUser = null;
+  let currentPoints = 0;
+
+  function usernameToEmail(username){
+    return username.trim().toLowerCase().replace(/\s+/g, "_") + "@dyabllo-users.app";
+  }
+
+  window.register = async function(){
+    const username = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value;
+
+    if(!username || !pass){
+      alert("أدخل اسم المستخدم وكلمة السر");
+      return;
+    }
+    if(username.length < 3){
+      alert("اسم المستخدم يجب أن يكون 3 أحرف على الأقل");
+      return;
+    }
+    if(pass.length < 6){
+      alert("كلمة السر يجب أن تكون 6 أحرف على الأقل");
+      return;
+    }
+
+    try{
+      const email = usernameToEmail(username);
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
+      await setDoc(doc(db, "users", cred.user.uid), {
+        username: username,
+        points: 0,
+        createdAt: Date.now()
+      });
+      alert("✅ تم إنشاء حسابك بنجاح! مرحباً بك " + username);
+    }catch(err){
+      if(err.code === "auth/email-already-in-use"){
+        alert("❌ اسم المستخدم هذا مسجّل من قبل، جرّب اسم آخر أو اضغط دخول");
+      }else if(err.code === "auth/invalid-email"){
+        alert("❌ اسم المستخدم يحتوي على رموز غير مسموحة، استخدم حروف وأرقام فقط");
+      }else{
+        alert("❌ حدث خطأ: " + err.message);
+      }
+    }
+  };
+
+  window.login = async function(){
+    const username = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value;
+
+    if(!username || !pass){
+      alert("أدخل اسم المستخدم وكلمة السر");
+      return;
+    }
+
+    try{
+      const email = usernameToEmail(username);
+      await signInWithEmailAndPassword(auth, email, pass);
+    }catch(err){
+      alert("❌ اسم المستخدم أو كلمة السر غير صحيحة، أو لا يوجد حساب بهذا الاسم بعد (سجّل حساب جديد أولاً)");
+    }
+  };
+
+  window.logout = async function(){
+    await signOut(auth);
+  };
+
+  onAuthStateChanged(auth, async (user) => {
+    const loginBox = document.getElementById("loginBox");
+    const userBox = document.getElementById("userBox");
+
+    if(user){
+      currentUser = user;
+
+      try{
+        const snap = await getDoc(doc(db, "users", user.uid));
+        if(snap.exists()){
+          currentPoints = snap.data().points || 0;
+          document.getElementById("welcomeName").innerText = snap.data().username || "مستخدم";
+        }else{
+          const fallbackName = user.email.split("@")[0];
+          await setDoc(doc(db, "users", user.uid), { username: fallbackName, points: 0, createdAt: Date.now() });
+          currentPoints = 0;
+          document.getElementById("welcomeName").innerText = fallbackName;
+        }
+      }catch(e){
+        currentPoints = 0;
+      }
+
+      document.getElementById("points").innerText = currentPoints;
+      loginBox.style.display = "none";
+      userBox.style.display = "flex";
+
+    }else{
+      currentUser = null;
+      currentPoints = 0;
+      document.getElementById("points").innerText = 0;
+      loginBox.style.display = "flex";
+      userBox.style.display = "none";
+    }
+  });
+
+  window.__saveCorrectAnswer = async function(){
+    if(!currentUser){
+      alert("⭐ سجل الدخول أولاً عشان نحفظلك نقاطك بشكل دائم");
+      return;
+    }
+    currentPoints++;
+    document.getElementById("points").innerText = currentPoints;
+    try{
+      await updateDoc(doc(db, "users", currentUser.uid), { points: increment(1) });
+    }catch(e){
+      console.error(e);
+    }
+    alert("✅ إجابة صحيحة +1 نقطة");
+  };
+
+}catch(err){
+  console.error("تعذر تحميل نظام الحسابات (Firebase):", err);
+  window.login = function(){ alert("⚠️ تعذر الاتصال بخدمة تسجيل الدخول. تحقق من اتصالك بالإنترنت وحدّث الصفحة، أو جرّب فتح الموقع من متصفح حقيقي بدل المعاينة."); };
+  window.register = window.login;
+}
+
+</script>
+
+</body>
+</html>
